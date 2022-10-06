@@ -4,13 +4,23 @@ import Footer from '../Footer/Footer'
 import Header from '../Header/Header'
 import { baseUrl } from '../../BaseUrl/BaseUrl';
 import axios from "axios";
-function Beef() {
+function Beef({cartInsUpdate}) {
   const [allProduct, setAllProduct] = useState([])
   useEffect(() => {
     axios.get(`${baseUrl}/productCategory/1`).then((response) => {
       setAllProduct(response?.data?.result);
     });
   }, [])
+  const addCart = (value) =>{
+    const localCartValue = JSON.parse(localStorage.getItem("cart")) ?? []
+    const updateValue = [...localCartValue , value]    
+    localStorage.setItem("cart",JSON.stringify(updateValue))
+    cartInsUpdate()
+}
+
+
+
+
   return (
   
     <div>
@@ -29,7 +39,7 @@ function Beef() {
                     <div class="card-body text-center">
                       <h5 class="card-title">{value.name}</h5>
                       <p class="card-text">Price : {value.price}</p>
-                      <button class="buy-now-button">Add To Cart</button>
+                      <button class="buy-now-button" onClick={()=>addCart(value)}>Add To Cart</button>
                     </div>
 
                   </div>

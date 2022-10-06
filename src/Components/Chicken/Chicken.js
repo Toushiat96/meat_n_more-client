@@ -3,7 +3,7 @@ import Header from '../Header/Header'
 import { baseUrl } from '../../BaseUrl/BaseUrl';
 import Footer from '../Footer/Footer'
 import axios from "axios";
-function Chicken() {
+function Chicken({cartInsUpdate}) {
     const [allProduct, setAllProduct] = useState([])
 
     useEffect(() => {
@@ -11,6 +11,19 @@ function Chicken() {
         setAllProduct(response?.data?.result);
       });
     }, [])
+
+// Add to cart
+
+
+const addCart = (value) =>{
+  const localCartValue = JSON.parse(localStorage.getItem("cart")) ?? []
+  const updateValue = [...localCartValue , value]    
+  localStorage.setItem("cart",JSON.stringify(updateValue))
+  cartInsUpdate()
+}
+
+
+
     return (
      
   
@@ -30,7 +43,7 @@ function Chicken() {
                       <div class="card-body text-center">
                         <h5 class="card-title">{value.name}</h5>
                         <p class="card-text">Price : {value.price}</p>
-                        <button class="buy-now-button">Add To Cart</button>
+                        <button class="buy-now-button" onClick={()=>addCart(value)}>Add To Cart</button>
                       </div>
   
                     </div>

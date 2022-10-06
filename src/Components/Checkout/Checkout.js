@@ -5,7 +5,7 @@ import Header from '../Header/Header'
 
 function Checkout() {
   const [cart , setCart] = useState(JSON.parse(localStorage.getItem("cart")) ?? [])
-    const [totalValue , setTotalValue] = useState()
+    const [totalValue , setTotalValue] = useState("")
     useEffect(()=>{
         let value = 0
         cart.length>0 && cart.map((cartV)=>{
@@ -16,6 +16,8 @@ function Checkout() {
 
     },[])
 
+
+    const total_amount=totalValue
   
   const [user, setUser] = useState({
       fname:'',
@@ -24,7 +26,7 @@ function Checkout() {
       delivery_date:'',
       payment_method:'COD',
       address:'',
-      total_amount:'',
+      // total_amount:totalValue,
       cart:cart
       
   });
@@ -42,9 +44,9 @@ function Checkout() {
   // sending data to server
   const PostData = async(e)=>{
     e.preventDefault();
-    const {fname, lname, address,delivery_date,phone,payment_method,total_amount,cart} = user;
+    const {fname, lname, address,delivery_date,phone,payment_method,cart} = user;
     
-    setUser({total_amount:totalValue})
+    // setUser({total_amount:totalValue})
    const res =  await fetch('http://localhost:5000/checkout',{
        method:"POST",
        headers:{
@@ -263,7 +265,7 @@ function Checkout() {
                
                 
                 <hr class="mb-4" />
-                <input type="text" name='total_amount'  value={totalValue} />
+                <input type="text" name='total_amount'  value={totalValue} onChange={handleInputs} />
                 <button onClick={PostData} class="btn btn-primary btn-lg btn-block" type="button">Confirm Order</button>
               </form>
             </div>

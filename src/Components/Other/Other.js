@@ -4,7 +4,7 @@ import { baseUrl } from '../../BaseUrl/BaseUrl';
 import Footer from '../Footer/Footer'
 import axios from "axios";
 
-function Other() {
+function Other({cartInsUpdate}) {
     const [allProduct, setAllProduct] = useState([])
 
     useEffect(() => {
@@ -12,6 +12,20 @@ function Other() {
         setAllProduct(response?.data?.result);
       });
     }, [])
+
+// Add to cart
+
+
+const addCart = (value) =>{
+  const localCartValue = JSON.parse(localStorage.getItem("cart")) ?? []
+  const updateValue = [...localCartValue , value]    
+  localStorage.setItem("cart",JSON.stringify(updateValue))
+  cartInsUpdate()
+}
+
+
+
+
     return (
      
   
@@ -31,7 +45,7 @@ function Other() {
                       <div class="card-body text-center">
                         <h5 class="card-title">{value.name}</h5>
                         <p class="card-text">Price : {value.price}</p>
-                        <button class="buy-now-button">Buy Now</button>
+                        <button class="buy-now-button" onClick={()=>addCart(value)}>Add To Cart</button>
                       </div>
   
                     </div>
