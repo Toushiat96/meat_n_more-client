@@ -46,7 +46,7 @@ function Allproductshow({cartInsUpdate}) {
               return <>
                 <div className="col-md-3 col-sm-6">
                   <div class="card  ">
-                    <img class="card-img-top" src={`${baseUrl}/images/${value}.jpg`} alt="Card image cap" />
+                    <img class="card-img-top" src={value.photo} alt="Card image cap" />
                     <div class="card-body text-center">
                       <h5 class="card-title">{value.name}</h5>
                       <p class="card-text">Price : {value.price}</p>

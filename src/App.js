@@ -11,6 +11,8 @@ import Other from './Components/Other/Other';
 import Checkout from './Components/Checkout/Checkout';
 import Cart from './Components/Cart/Cart';
 import { useEffect, useState } from 'react';
+import AdminPanel from './Components/AdminPanel/AdminPanel';
+import AddProduct from './Components/AdminPanel/AddProduct';
 function App() {
   const [pageLoad , setPageLoad] = useState(false)
   const cartInsUpdate = ()=>{
@@ -33,6 +35,8 @@ function App() {
           <Route path='/other' element={<Other></Other>}></Route>
           <Route path='/checkout' element={<Checkout></Checkout>}></Route>
           <Route path='/cart' element={<Cart></Cart>}></Route>
+          <Route path='/admin' element={<AdminPanel></AdminPanel>}></Route>
+          <Route path='/addproduct' element={<AddProduct></AddProduct>}></Route>
         </Routes>
 
       </Router>

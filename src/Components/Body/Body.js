@@ -1,8 +1,10 @@
 import React from 'react'
-import beef from '../../images/beef.jpg'
-import mutton from '../../images/2.jpg'
+import beef from '../../images/beef.png'
+import mutton from '../../images/mutton.png'
 import chiken from '../../images/04.jpg'
-import mach from '../../images/12.jpg'
+import mach from '../../images/fish.png'
+import {Link } from 'react-router-dom'
+import './Body.css'
 function Body() {
   return (
     <div class="container">
@@ -18,9 +20,9 @@ function Body() {
               <div class="row align-items-center">
             <div class="col-md-6">
                 <h1>BEEF</h1>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged</p>
+                <p >we ensure to deliver our customer fresh and hygiene native beef also we provide the highest Quality Products Available in the market.</p>
                 
-                <button class="buy-now-button">Buy Now</button>
+               <Link to="/beef"> <button class="buy-now-button">Buy Now</button></Link>
             </div>
             <div class="col-md-6">
                 <img class="d-block w-100" src={beef} alt="First slide" />
@@ -32,7 +34,7 @@ function Body() {
             <div class="row align-items-center">
                 <div class="col-md-6 ">
                 <h1>MUTTON</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et illum in iste rerum perferendis suscipit ipsa commodi, dolores laborum iusto sequi, incidunt voluptas eos est molestiae temporibus minima corporis voluptatibus!</p>
+                <p>we offer high Quality Mutton cuts. Our mutton meat products are from Our farms</p>
                <button class="buy-now-button">Buy Now</button>
                 </div>
                <div class="col-md-6">
@@ -44,7 +46,8 @@ function Body() {
               <div class="row align-items-center">
               <div class="col-md-6 ">
                 <h1>CHIKEN</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et illum in iste rerum perferendis suscipit ipsa commodi, dolores laborum iusto sequi, incidunt voluptas eos est molestiae temporibus minima corporis voluptatibus!</p>
+                <p>we supply Organic, Disease free, native broiler and layer chickens directly from our farms to Consumers</p>
+                <button class="buy-now-button">Buy Now</button>
               </div>
               <div class="col-md-6">
                 <img class="d-block w-100" src={chiken} alt="Third slide" />
@@ -54,8 +57,9 @@ function Body() {
           <div class="carousel-item">
               <div class="row align-items-center">
               <div class="col-md-6 ">
-                <h1>MACH</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et illum in iste rerum perferendis suscipit ipsa commodi, dolores laborum iusto sequi, incidunt voluptas eos est molestiae temporibus minima corporis voluptatibus!</p>
+                <h1>FISH</h1>
+                <p>Getting Fish From us at Affordable Prices at your doors</p>
+                <button class="buy-now-button">Buy Now</button>
               </div>
               <div class="col-md-6">
                 <img class="d-block w-100" src={mach} alt="Third slide" />

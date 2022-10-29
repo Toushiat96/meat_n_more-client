@@ -1,10 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../Header/Header'
+import logo from '../../images/logo.jpg'
+import {Link } from 'react-router-dom'
+import axios from "axios";
+import { baseUrl } from '../../BaseUrl/BaseUrl'
+import Sidebar from './Sidebar';
 
 function AdminPanel() {
+    const [information, setInformation] = useState([])
+
+  useEffect(() => {
+    axios.get(`${baseUrl}/information`).then((response) => {
+      setInformation(response?.data?.result);
+    });
+  }, [])
+
   return (
     <div>
-        <Header></Header>
+        {/* <Header></Header> */}
         <div className="container-fluid">
             <div className="row">
                 <div className="col-md-3 mt-5">
@@ -22,22 +35,42 @@ function AdminPanel() {
                             <thead className="thead-dark">
                                 <tr>
                                     <th scope="col">Name</th>
-                                    <th scope="col">Email ID</th>
-                                    <th scope="col">Service</th>
-                                    <th scope="col">Project Details</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col">Delivary Date</th>
+                                    <th scope="col">Address</th>
+                                    <th scope="col">Payment method</th>
+                                    
+                                    <th scope="col">Product Name</th>
+                                    <th scope="col">Product Quantity</th>
+                                    <th scope="col">Product Price</th>
+                                    <th scope="col">Total Amount</th>
                                 </tr>
                             </thead>
-                            {admindata.filter(inf => inf.length=!0).map(filteredPerson => (
-                            <tbody>
-                                <td>{filteredPerson.name}</td>
-                                <td>{filteredPerson.email}</td>
-                                <td>{filteredPerson.service}</td>
-                                <td>{filteredPerson.description}</td>
-                                <td>{}</td>
+                           
+                            
+                            {
+                               information.map((inf)=>(
+                                <tbody>
+                                <td>{inf.lname}</td>
+                                <td>{inf.phone}</td>
+                                <td>{inf.delivary_date}</td>
+                                <td>{inf.address}</td>
+                                <td>{inf.payment_method}</td>
+                                <td>{inf.product_name}</td>
+                                <td>{inf.product_quantity}</td>
+                                <td>{inf.product_price}</td>
+                                <td>{inf.total_amount}</td>
+                                
+                               
+                             
+                                
 
                             </tbody>
-                             ))}
+                               ))}
+
+
+
+
                         </table>
                     </div>
                 </div>
